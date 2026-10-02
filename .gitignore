@@ -5,3 +5,11 @@
 # Editor
 .vscode/
 .cursor/
+
+# Third-party CAD models — kept locally, not redistributed
+cad-resources/
+
+# AI assistant config — local only
+CLAUDE.md
+AGENTS.md
+.claude/

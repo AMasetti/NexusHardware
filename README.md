@@ -1,16 +1,14 @@
 # NexusHardware
 
-CAD files, STLs, GCode, and datasheets for the Nexus Robotics hardware. Reference-only — no firmware or code lives here.
+CAD, print-ready STLs, bill of materials, wiring and datasheets for the Optimus biped robot. Reference-only — no firmware or code lives here.
 
-Part of the [NexusRobotics](https://github.com/AMasetti/NexusRobotics) monorepo.
+Related repos: [NexusFirmware](https://github.com/AMasetti/NexusFirmware) · [NexusSimulation](https://github.com/AMasetti/NexusSimulation) · [NexusFuturespace](https://github.com/AMasetti/NexusFuturespace)
 
 ---
 
-## Robots
+## Optimus Biped Robot
 
-### Optimus Biped Robot
-
-Active development target. 8-DOF biped with MG995 leg servos and Futaba S3003 arm servos.
+8-DOF biped with MG995 leg servos and Futaba S3003 arm servos.
 
 | Component | Part | Notes |
 |---|---|---|
@@ -22,9 +20,7 @@ Active development target. 8-DOF biped with MG995 leg servos and Futaba S3003 ar
 
 Leg geometry: femur 90mm → knee → tibia 90mm → ankle → foot 30mm.
 
-### Tini Biped (Archived)
-
-Earlier biped prototype. Superseded by Optimus. Files kept for reference.
+Full parts list in [`BOM.csv`](optimus-biped-robot/BOM.csv); pinout and power distribution in [`wiring.md`](optimus-biped-robot/wiring.md).
 
 ---
 
@@ -32,21 +28,11 @@ Earlier biped prototype. Superseded by Optimus. Files kept for reference.
 
 ```
 NexusHardware/
-├── Optimus Biped Robot/
+├── optimus-biped-robot/
 │   ├── STL/          # Print-ready STL files for all body parts
-│   └── STEP/         # Source CAD (editable in Fusion 360, FreeCAD, etc.)
-├── Tini Biped (Archived project)/
-│   ├── 20240402/     # Iteration by date — STL + GCode
-│   ├── 20240405/
-│   ├── 20240413/
-│   ├── 20240419/
-│   ├── 20240422/
-│   ├── leg-assemblies/  # Full leg assembly GCode
-│   └── misc/            # Loose parts from early iterations
-├── cad resources/
-│   ├── pca9685/      # PCA9685 CAD model (STEP, STL, SKP, OBJ)
-│   ├── power/        # LM2596 step-down, battery holder, I2C controller (STEP)
-│   └── raspberry-pi-zero-w/  # Pi Zero W CAD model (STEP, IGS, STL)
+│   ├── STEP/         # Source CAD (editable in Fusion 360, FreeCAD, etc.)
+│   ├── BOM.csv       # Bill of materials
+│   └── wiring.md     # Wiring and power distribution
 └── datasheets/       # Component datasheets
 ```
 
@@ -55,11 +41,10 @@ NexusHardware/
 ## Printing notes
 
 - All STLs are sized for FDM printing in PLA or PETG.
-- GCode files in `Tini Biped/` were sliced for a specific printer — re-slice from STL for your setup.
 - STEP files are the editable source; modify these if you need to adjust tolerances.
 
 ---
 
 ## MuJoCo meshes
 
-The STL files from `Optimus Biped Robot/STL/` are mirrored in [NexusSimulation](https://github.com/AMasetti/NexusSimulation) under `Optimus Full/meshes/` for use in the MuJoCo simulation. If you update a part, update both.
+Lower-resolution copies of the STLs live in [NexusSimulation](https://github.com/AMasetti/NexusSimulation) under `optimus/urdf/full/meshes/` for the MuJoCo model. If you update a part, re-export both.
